@@ -1,0 +1,15 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+node_modules
+dist
+
+# Editor directories and files
+.DS_Store
+
+.env
+Weather-Dashboard.pdf
+package-lock.json
+.vite.config.js
