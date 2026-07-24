@@ -13,3 +13,5 @@ dist
 Weather-Dashboard.pdf
 package-lock.json
 .vite.config.js
+
+notes.md
