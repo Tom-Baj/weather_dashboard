@@ -1,0 +1,27 @@
+// Design tokens
+
+$color-bg: #0f1b33;
+$color-bg-elevated: #16213e;
+$color-surface: rgba(255, 255, 255, 0.08);
+$color-surface-hover: rgba(255, 255, 255, 0.12);
+$color-border: rgba(255, 255, 255, 0.14);
+$color-text: #f0f4ff;
+$color-text-muted: rgba(240, 244, 255, 0.65);
+$color-accent: #5b8cff;
+$color-accent-soft: rgba(91, 140, 255, 0.25);
+$color-accent-warm: #ffb347;
+$color-error: #ff6b6b;
+$color-error-soft: rgba(255, 107, 107, 0.08);
+
+$radius-sm: 0.5rem;
+$radius-md: 0.875rem;
+$radius-lg: 1.25rem;
+$radius-pill: 999px;
+
+$shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.28);
+$shadow-glow: 0 0 40px rgba(91, 140, 255, 0.18);
+
+$font-stack: "Segoe UI", system-ui, -apple-system, sans-serif;
+
+$transition-fast: 0.18s ease;
+$transition-base: 0.28s ease;
