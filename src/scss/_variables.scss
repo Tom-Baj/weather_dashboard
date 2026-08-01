@@ -12,6 +12,7 @@ $color-accent-soft: rgba(91, 140, 255, 0.25);
 $color-accent-warm: #ffb347;
 $color-error: #ff6b6b;
 $color-error-soft: rgba(255, 107, 107, 0.08);
+$color-orange: hsl(35, 100%, 50%);
 
 $radius-sm: 0.5rem;
 $radius-md: 0.875rem;
@@ -21,7 +22,11 @@ $radius-pill: 999px;
 $shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.28);
 $shadow-glow: 0 0 40px rgba(91, 140, 255, 0.18);
 
-$font-stack: "Segoe UI", system-ui, -apple-system, sans-serif;
+$font-stack:
+   "Segoe UI",
+   system-ui,
+   -apple-system,
+   sans-serif;
 
 $transition-fast: 0.18s ease;
 $transition-base: 0.28s ease;

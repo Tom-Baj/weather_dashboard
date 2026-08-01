@@ -16,37 +16,37 @@
    padding: 2.5rem 1.5rem 3rem;
    overflow: hidden;
    text-align: center;
-}
 
-.hero__content {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: 0.75rem;
-   max-width: 36rem;
-   z-index: 1;
-}
-
-.hero__title {
-   font-size: clamp(1.75rem, 4vw, 2.5rem);
-   font-weight: 700;
-   letter-spacing: -0.02em;
-   line-height: 1.2;
-   color: $color-text;
-
-   &:empty {
-      display: none;
+   &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      max-width: 36rem;
+      z-index: 1;
    }
-}
 
-.hero__subtitle {
-   font-size: clamp(0.95rem, 2vw, 1.1rem);
-   font-weight: 400;
-   color: $color-text-muted;
-   max-width: 28rem;
+   &__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: $color-text;
 
-   &:empty {
-      display: none;
+      &:empty {
+         display: none;
+      }
+   }
+
+   &__subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      font-weight: 400;
+      color: $color-text-muted;
+      max-width: 28rem;
+
+      &:empty {
+         display: none;
+      }
    }
 }
 
@@ -56,8 +56,16 @@
    z-index: 0;
    pointer-events: none;
    background:
-      radial-gradient(circle at 50% 70%, rgba(91, 140, 255, 0.12) 0%, transparent 45%),
-      radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.04) 0%, transparent 30%);
+      radial-gradient(
+         circle at 50% 70%,
+         rgba(91, 140, 255, 0.12) 0%,
+         transparent 45%
+      ),
+      radial-gradient(
+         circle at 20% 30%,
+         rgba(255, 255, 255, 0.04) 0%,
+         transparent 30%
+      );
    opacity: 0.9;
 
    &:empty::after {
@@ -88,62 +96,49 @@
    justify-content: center;
    gap: 0.75rem;
    z-index: 1;
-}
 
-.logo__icon {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   width: 3.25rem;
-   height: 3.25rem;
-   border-radius: 1rem;
-   background: $color-surface;
-   border: 1px solid $color-border;
-   box-shadow: $shadow-soft, $shadow-glow;
-   overflow: hidden;
+   &__icon {
+      img {
+         width: 8rem;
+         height: 8rem;
+      }
+   }
 
-   img {
-      width: 2.1rem;
-      height: 2.1rem;
-      object-fit: contain;
+   &__text {
+      font-size: 1.5rem;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      color: $color-text;
+
+      &:empty::before {
+         content: "Weather";
+         opacity: 0.95;
+      }
+   }
+
+   &__separator {
+      width: 1px;
+      height: 1.5rem;
+      background: $color-orange;
+      border-radius: $radius-pill;
+
+      &:empty {
+         display: block;
+      }
+   }
+
+   &__accent {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: $color-accent;
+
+      &:empty::before {
+         content: "Flow";
+      }
    }
 }
-
-.logo__text {
-   font-size: 1.25rem;
-   font-weight: 650;
-   letter-spacing: -0.01em;
-   color: $color-text;
-
-   &:empty::before {
-      content: "Weather";
-      opacity: 0.95;
-   }
-}
-
-.logo__separator {
-   width: 1px;
-   height: 1.25rem;
-   background: $color-border;
-   border-radius: $radius-pill;
-
-   &:empty {
-      display: block;
-   }
-}
-
-.logo__accent {
-   font-size: 0.8rem;
-   font-weight: 600;
-   letter-spacing: 0.04em;
-   text-transform: uppercase;
-   color: $color-accent;
-
-   &:empty::before {
-      content: "Dashboard";
-   }
-}
-
 // ---------------------------------------------------------------------------
 // Search
 // ---------------------------------------------------------------------------
@@ -171,13 +166,23 @@
    &:focus-within {
       background: $color-surface-hover;
       border-color: rgba(91, 140, 255, 0.55);
-      box-shadow: $shadow-soft, 0 0 0 3px $color-accent-soft;
+      box-shadow:
+         $shadow-soft,
+         0 0 0 3px $color-accent-soft;
    }
 
    &--large {
       max-width: 34rem;
       padding: 0.7rem 0.7rem 0.7rem 1.15rem;
    }
+}
+
+.search__form {
+   display: flex;
+   align-items: center;
+   flex: 1;
+   min-width: 0;
+   gap: 0.65rem;
 }
 
 .search__icon {
