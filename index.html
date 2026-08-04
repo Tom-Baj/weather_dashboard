@@ -1,46 +1,90 @@
 <!doctype html>
 <html lang="fr">
-   <head>
-      <meta charset="UTF-8" />
-      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>weather-dashboard</title>
-      <link rel="icon" type="image/ico" href="assets/icons/favicon.ico" />
-   </head>
-   <body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weather-dashboard</title>
+    <link rel="icon" type="image/ico" href="assets/icons/favicon.ico" />
+  </head>
+
+  <body>
+    <div id="app">
       <section class="hero">
-         <div class="logo">
-            <div class="logo__icon">
-               <img src="assets/icons/weather_icon.webp" alt="weather icon" />
-            </div>
-            <div class="logo__text"></div>
-            <span class="logo__separator"></span>
-            <div class="logo__accent"></div>
-         </div>
+        <!-- Identité visuelle -->
+        <div class="logo">
+          <div class="logo__icon">
+            <img src="assets/icons/weather_icon.webp" alt="weather icon" />
+          </div>
 
-         <div class="search search--large">
+          <div class="logo__name"></div>
+          <span class="logo__separator"></span>
+          <div class="logo__name-accent"></div>
+        </div>
+        <!-- Recherche d'une ville -->
+        <div class="search-flow">
+          <div class="search search--large">
             <div class="search__icon"></div>
+
             <form class="search__form" action="" method="get">
-               <input
-                  class="search__input"
-                  type="text"
-                  placeholder="Rechercher une ville..." />
-               <button class="search__button" type="submit"></button>
+              <label for="search-input" class="sr-only"> Rechercher une ville </label>
+
+              <input id="search-input" class="search__input" type="text" placeholder="Rechercher une ville..." />
+
+              <button id="search-button" class="search__button" aria-label="Rechercher" type="submit"></button>
             </form>
-         </div>
+          </div>
 
-         <div class="hero__content">
-            <h1 class="hero__title">Le temps commence ici.</h1>
-            <p class="hero__subtitle">
-               Trouvez les conditions météorologiques les plus précises pour
-               votre ville.
-            </p>
-         </div>
+          <!-- États de l'interface -->
+          <div class="states">
+            <section class="state state--idle" hidden>
+              <div class="hero__content">
+                <h1 class="hero__title">Le temps commence ici.</h1>
 
-         <div class="hero__illustration"></div>
+                <p class="hero__subtitle">Trouvez les conditions météorologiques les plus précises pour votre ville.</p>
+              </div>
+
+              <div class="hero__illustration"></div>
+            </section>
+
+            <section class="state state--searching" hidden>
+              <div class="search-results search-results--loading">
+                <div class="search-results__spinner"></div>
+                <div class="search-results__messages">
+                  <p class="search-results__message">Recherche de la ville...</p>
+                  <p class="search-results__message search-results__message--secondary">
+                    Nous recherchons les villes correspondant à <span class="city-name">Paris</span>.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="state state--choosing" hidden>
+              <div class="search-results">
+                <ul class="search-results__list">
+                  <li>
+                    <button class="search-results__option" type="button">Paris — Île-de-France, France</button>
+                  </li>
+
+                  <li>
+                    <button class="search-results__option" type="button">Paris — Texas, États-Unis</button>
+                  </li>
+
+                  <li>
+                    <button class="search-results__option" type="button">Paris — Ontario, Canada</button>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="state state--loading" hidden></section>
+            <section class="state state--success" hidden></section>
+            <section class="state state--error" hidden></section>
+            <section class="state state--empty" hidden></section>
+          </div>
+        </div>
       </section>
+    </div>
 
-      <div id="app"></div>
-      <script type="module" src="/src/main.js"></script>
-   </body>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
