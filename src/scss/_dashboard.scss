@@ -50,29 +50,6 @@
   }
 }
 
-#app[data-state="success"] {
-  .hero {
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 2.5rem;
-    text-align: left;
-  }
-
-  .hero__toolbar {
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 4rem;
-    width: min(100%, 70rem);
-    margin: 0 auto;
-  }
-
-  .states {
-    align-items: stretch;
-    width: min(100%, 70rem);
-    margin: 0 auto;
-  }
-}
-
 .hero__illustration {
   position: absolute;
   inset: 0;
@@ -267,12 +244,6 @@
   .hero {
     gap: 1.5rem;
     padding: 1.75rem 1rem 2.25rem;
-  }
-
-  #app[data-state="success"] .hero__toolbar {
-    flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
   }
 
   .logo {
