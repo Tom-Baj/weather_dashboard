@@ -8,83 +8,265 @@
   </head>
 
   <body>
-    <div id="app">
+    <div id="app" data-state="success">
       <section class="hero">
-        <!-- Identité visuelle -->
-        <div class="logo">
-          <div class="logo__icon">
-            <img src="assets/icons/weather_icon.webp" alt="weather icon" />
+        <div class="hero__toolbar">
+          <!-- Identité visuelle -->
+          <div class="logo">
+            <div class="logo__icon">
+              <img src="assets/icons/weather_icon.webp" alt="weather icon" />
+            </div>
+
+            <div class="logo__name"></div>
+            <span class="logo__separator"></span>
+            <div class="logo__name-accent"></div>
           </div>
 
-          <div class="logo__name"></div>
-          <span class="logo__separator"></span>
-          <div class="logo__name-accent"></div>
-        </div>
-        <!-- Recherche d'une ville -->
-        <div class="search-flow">
-          <div class="search search--large">
-            <div class="search__icon"></div>
-
-            <form class="search__form" action="" method="get">
-              <label for="search-input" class="sr-only"> Rechercher une ville </label>
-
-              <input id="search-input" class="search__input" type="text" placeholder="Rechercher une ville..." />
-
-              <button id="search-button" class="search__button" aria-label="Rechercher" type="submit"></button>
-            </form>
-          </div>
-
-          <!-- États de l'interface -->
-          <div class="states">
-            <section class="state state--idle" hidden>
-              <div class="hero__content">
-                <h1 class="hero__title">Le temps commence ici.</h1>
-
-                <p class="hero__subtitle">Trouvez les conditions météorologiques les plus précises pour votre ville.</p>
+          <!-- Recherche d'une ville -->
+          <div class="search-flow">
+            <div class="search search--large">
+              <div class="search__icon">
+                <iconify-icon icon="material-symbols:search" aria-hidden="true"></iconify-icon>
               </div>
 
-              <div class="hero__illustration"></div>
-            </section>
+              <form class="search__form" action="" method="get">
+                <label for="search-input" class="sr-only"> Rechercher une ville </label>
 
-            <section class="state state--searching" hidden>
-              <div class="search-results search-results--loading">
-                <div class="search-results__spinner"></div>
-                <div class="search-results__messages">
-                  <p class="search-results__message">Recherche de la ville...</p>
-                  <p class="search-results__message search-results__message--secondary">
-                    Nous recherchons les villes correspondant à <span class="city-name">Paris</span>.
-                  </p>
+                <input
+                  id="search-input"
+                  class="search__input"
+                  type="text"
+                  value="Paris"
+                  placeholder="Rechercher une ville..."
+                />
+
+                <button id="search-button" class="search__button" aria-label="Rechercher" type="submit">
+                  <iconify-icon icon="maki:arrow" aria-hidden="true"></iconify-icon>
+                </button>
+              </form>
+            </div>
+
+            <!-- États de la recherche -->
+            <div class="search-states">
+              <section class="state state--searching" hidden>
+                <div class="search-results search-results--search">
+                  <div class="search-results__spinner"></div>
+                  <div class="search-results__messages">
+                    <p class="search-results__message">Recherche de la ville...</p>
+                    <p class="search-results__message search-results__message--secondary">
+                      Nous recherchons les villes correspondant à <span class="city-name">Paris</span>.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="state state--choosing" hidden>
+                <div class="search-results">
+                  <ul class="search-results__list">
+                    <li>
+                      <button class="search-results__option" type="button">Paris — Île-de-France, France</button>
+                    </li>
+
+                    <li>
+                      <button class="search-results__option" type="button">Paris — Texas, États-Unis</button>
+                    </li>
+
+                    <li>
+                      <button class="search-results__option" type="button">Paris — Ontario, Canada</button>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <!-- États principaux de l'interface -->
+        <div class="states">
+          <!-- Idle state -->
+          <section class="state state--idle">
+            <div class="hero__content">
+              <h1 class="hero__title">Le temps commence ici.</h1>
+
+              <p class="hero__subtitle">Trouvez les conditions météorologiques les plus précises pour votre ville.</p>
+            </div>
+
+            <div class="hero__illustration"></div>
+          </section>
+
+          <!-- Loading state -->
+          <section class="state state--loading" hidden>
+            <div class="search-results search-results--loading">
+              <div class="search-results__spinner">
+                <img src="assets/images/loading.webp" alt="Chargement..." class="search-results__spinner-image" />
+              </div>
+              <div class="search-results__messages">
+                <p class="search-results__message">La météo arrive...</p>
+                <p class="search-results__message search-results__message--secondary">
+                  Récupération des conditions pour <span class="city-name">Paris</span>.
+                </p>
+              </div>
+              <div class="search-results__forecast-preview" aria-hidden="true">
+                <div class="search-results__preview-card"></div>
+                <div class="search-results__preview-lines">
+                  <span></span>
+                  <span></span>
+                  <span></span>
                 </div>
               </div>
-            </section>
-
-            <section class="state state--choosing" hidden>
-              <div class="search-results">
-                <ul class="search-results__list">
-                  <li>
-                    <button class="search-results__option" type="button">Paris — Île-de-France, France</button>
-                  </li>
-
-                  <li>
-                    <button class="search-results__option" type="button">Paris — Texas, États-Unis</button>
-                  </li>
-
-                  <li>
-                    <button class="search-results__option" type="button">Paris — Ontario, Canada</button>
-                  </li>
-                </ul>
+              <div class="search-results__daily-preview" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
-            </section>
+            </div>
+          </section>
 
-            <section class="state state--loading" hidden></section>
-            <section class="state state--success" hidden></section>
-            <section class="state state--error" hidden></section>
-            <section class="state state--empty" hidden></section>
-          </div>
+          <!-- Success state -->
+          <section class="state state--success" hidden>
+            <div class="success-state">
+              <h1 class="success-state__city" aria-label="Nom de la ville">Paris</h1>
+              <p class="success-state__country">France</p>
+              <p class="success-state__temperature">24°</p>
+              <p class="success-state__description">Partiellement nuageux</p>
+              <div class="success-state__datetime">
+                <iconify-icon icon="mdi:clock-outline" aria-hidden="true"></iconify-icon>
+                <span class="success-state__date"> Dimanche 2 août</span>
+                <span class="success-state__separator">•</span>
+                <span class="success-state__time"> 16:00</span>
+              </div>
+              <div class="weather-details">
+                <div class="weather-details__item weather-details__item--feels-like">
+                  <div class="weather-details__icon">
+                    <iconify-icon icon="solar:temperature-line-duotone" aria-hidden="true"></iconify-icon>
+                  </div>
+                  <div class="weather-details__content">
+                    <span class="weather-details__label">Ressenti</span>
+                    <span class="weather-details__value">25°</span>
+                  </div>
+                </div>
+                <div class="weather-details__item weather-details__item--humidity">
+                  <div class="weather-details__icon">
+                    <iconify-icon icon="ph:drop-duotone" aria-hidden="true"></iconify-icon>
+                  </div>
+                  <div class="weather-details__content">
+                    <span class="weather-details__label">Humidité</span>
+                    <span class="weather-details__value">58 %</span>
+                  </div>
+                </div>
+                <div class="weather-details__item weather-details__item--wind">
+                  <div class="weather-details__icon">
+                    <iconify-icon icon="solar:wind-line-duotone" aria-hidden="true"></iconify-icon>
+                  </div>
+                  <div class="weather-details__content">
+                    <span class="weather-details__label">Vent</span>
+                    <span class="weather-details__value">14 km/h</span>
+                  </div>
+                </div>
+              </div>
+              <div class="success-state__illustration">
+                <img
+                  class="success-state__illustration-image"
+                  src="assets/images/success-weather-hero.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="forecast">
+                <h2 class="forecast__title">Prévisions sur 5 jours</h2>
+                <div class="forecast__item">
+                  <span class="forecast__day">Lun</span>
+                  <div class="forecast__icon">
+                    <iconify-icon icon="meteocons:partly-cloudy-day-fill" aria-hidden="true"></iconify-icon>
+                  </div>
+                  <span class="forecast__temperature">25°</span>
+                  <span class="forecast__temperature forecast__temperature--secondary">17°</span>
+                </div>
+
+                <div class="forecast__item">
+                  <span class="forecast__day">Mar</span>
+                  <div class="forecast__icon">
+                    <iconify-icon icon="meteocons:overcast-fill" aria-hidden="true"></iconify-icon>
+                  </div>
+                  <span class="forecast__temperature">23°</span>
+                  <span class="forecast__temperature forecast__temperature--secondary">16°</span>
+                </div>
+
+                <div class="forecast__item">
+                  <span class="forecast__day">Mer</span>
+                  <div class="forecast__icon">
+                    <iconify-icon icon="meteocons:partly-cloudy-day-rain-fill" aria-hidden="true"></iconify-icon>
+                  </div>
+                  <span class="forecast__temperature">22°</span>
+                  <span class="forecast__temperature forecast__temperature--secondary">15°</span>
+                </div>
+
+                <div class="forecast__item">
+                  <span class="forecast__day">Jeu</span>
+                  <div class="forecast__icon">
+                    <iconify-icon icon="meteocons:partly-cloudy-day-fill" aria-hidden="true"></iconify-icon>
+                  </div>
+                  <span class="forecast__temperature">26°</span>
+                  <span class="forecast__temperature forecast__temperature--secondary">17°</span>
+                </div>
+
+                <div class="forecast__item">
+                  <span class="forecast__day">Ven</span>
+                  <div class="forecast__icon">
+                    <iconify-icon icon="meteocons:clear-day-fill" aria-hidden="true"></iconify-icon>
+                  </div>
+                  <span class="forecast__temperature">27°</span>
+                  <span class="forecast__temperature forecast__temperature--secondary">18°</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Error state -->
+          <section class="state state--error" hidden>
+            <div class="error-state">
+              <div class="error-state__illustration" aria-hidden="true">
+                <img
+                  src="assets/images/cloud_offline_icon.webp"
+                  alt="cloud offline icon"
+                  class="error-state__illustration-image"
+                />
+              </div>
+
+              <h1 class="error-state__title">Impossible de charger la météo</h1>
+              <p class="error-state__text">Un problème est survenu. Vérifie ta connexion puis réessaie.</p>
+              <button class="error-state__retry" type="button">
+                <iconify-icon class="error-state__retry-icon" aria-hidden="true" icon="mdi:reload"></iconify-icon>
+
+                Réessayer
+              </button>
+              <button class="error-state__secondary" type="button">Nouvelle recherche</button>
+            </div>
+          </section>
+
+          <!-- Empty state -->
+          <section class="state state--empty" hidden>
+            <div class="empty-state">
+              <div class="empty-state__illustration" aria-hidden="true">
+                <img
+                  src="assets/images/icon_empty.webp"
+                  alt="cloud offline icon"
+                  class="empty-state__illustration-image"
+                />
+              </div>
+
+              <h1 class="empty-state__title">Aucune ville trouvée</h1>
+              <p class="empty-state__text">Vérifie l'orthographe ou essaie une autre recherche.</p>
+              <button class="empty-state__action" type="button">Modifier la recherche</button>
+            </div>
+          </section>
         </div>
       </section>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@3.0.0/dist/iconify-icon.min.js"></script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
