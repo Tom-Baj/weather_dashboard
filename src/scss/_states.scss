@@ -21,9 +21,8 @@
   }
 }
 
-// Search and choice panels use the dropdown panel styling
-.state--searching,
-.state--choosing {
+.state--choosing,
+.state--searching {
   @include dropdown-panel;
 }
 
@@ -35,6 +34,7 @@
 // Search results / helper states
 .search-results {
   width: 100%;
+  @include glass;
 
   // Search results variants: searching and choosing list panels
   &--searching,
@@ -43,7 +43,6 @@
     margin: 0;
     padding: 0.5rem;
     list-style: none;
-
     @include glass;
   }
 
@@ -90,7 +89,7 @@
     width: 100%;
     padding: 0.85rem 1rem;
     border-radius: 0.85rem;
-
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     color: $color-text;
     text-align: left;
 

@@ -2,8 +2,8 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-// Hero (état initial / landing)
-.hero {
+//  (état initial / landing)
+.dashboard {
   position: relative;
   @include flex-center-column;
   gap: 2rem;
@@ -50,7 +50,7 @@
   }
 }
 
-.hero__illustration {
+.dashboard__illustration {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -241,7 +241,7 @@
 // ---------------------------------------------------------------------------
 
 @media (max-width: 480px) {
-  .hero {
+  .dashboard {
     gap: 1.5rem;
     padding: 1.75rem 1rem 2.25rem;
   }

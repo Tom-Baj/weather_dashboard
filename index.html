@@ -8,9 +8,9 @@
   </head>
 
   <body>
-    <div id="app" data-state="success">
-      <section class="hero">
-        <div class="hero__toolbar">
+    <div id="app" data-state="choosing">
+      <section class="dashboard">
+        <div class="dashboard__toolbar">
           <!-- Identité visuelle -->
           <div class="logo">
             <div class="logo__icon">
@@ -21,8 +21,6 @@
             <span class="logo__separator"></span>
             <div class="logo__name-accent"></div>
           </div>
-
-          <!-- Recherche d'une ville -->
           <div class="search-flow">
             <div class="search search--large">
               <div class="search__icon">
@@ -36,7 +34,7 @@
                   id="search-input"
                   class="search__input"
                   type="text"
-                  value="Paris"
+                  value=""
                   placeholder="Rechercher une ville..."
                 />
 
@@ -46,52 +44,53 @@
               </form>
             </div>
 
-            <!-- États de la recherche -->
-            <div class="search-states">
-              <section class="state state--searching" hidden>
-                <div class="search-results search-results--search">
-                  <div class="search-results__spinner"></div>
-                  <div class="search-results__messages">
-                    <p class="search-results__message">Recherche de la ville...</p>
-                    <p class="search-results__message search-results__message--secondary">
-                      Nous recherchons les villes correspondant à <span class="city-name">Paris</span>.
-                    </p>
-                  </div>
+            <!-- Choosing state (dropdown ancré sous la search bar) -->
+            <section class="state state--choosing">
+              <div class="search-results">
+                <ul class="search-results__list">
+                  <li>
+                    <button class="search-results__option city-name" type="button">Paris — Île-de-France, France</button>
+                  </li>
+
+                  <li>
+                    <button class="search-results__option city-name" type="button">Paris — Texas, États-Unis</button>
+                  </li>
+
+                  <li>
+                    <button class="search-results__option city-name" type="button">Paris — Ontario, Canada</button>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Searching state (dropdown ancré sous la search bar) -->
+            <section class="state state--searching" hidden>
+              <div class="search-results search-results--search">
+                <div class="search-results__spinner"></div>
+                <div class="search-results__messages">
+                  <p class="search-results__message">Recherche de la ville...</p>
+                  <p class="search-results__message search-results__message--secondary">
+                    Nous recherchons les villes correspondant à <span class="city-name">Paris</span>.
+                  </p>
                 </div>
-              </section>
-
-              <section class="state state--choosing" hidden>
-                <div class="search-results">
-                  <ul class="search-results__list">
-                    <li>
-                      <button class="search-results__option" type="button">Paris — Île-de-France, France</button>
-                    </li>
-
-                    <li>
-                      <button class="search-results__option" type="button">Paris — Texas, États-Unis</button>
-                    </li>
-
-                    <li>
-                      <button class="search-results__option" type="button">Paris — Ontario, Canada</button>
-                    </li>
-                  </ul>
-                </div>
-              </section>
-            </div>
+              </div>
+            </section>
           </div>
         </div>
 
         <!-- États principaux de l'interface -->
         <div class="states">
           <!-- Idle state -->
-          <section class="state state--idle">
-            <div class="hero__content">
-              <h1 class="hero__title">Le temps commence ici.</h1>
+          <section class="state state--idle" hidden>
+            <div class="dashboard">
+              <h1 class="dashboard__title">Le temps commence ici.</h1>
 
-              <p class="hero__subtitle">Trouvez les conditions météorologiques les plus précises pour votre ville.</p>
+              <p class="dashboard__subtitle">
+                Trouvez les conditions météorologiques les plus précises pour votre ville.
+              </p>
             </div>
 
-            <div class="hero__illustration"></div>
+            <div class="dashboard__illustration"></div>
           </section>
 
           <!-- Loading state -->

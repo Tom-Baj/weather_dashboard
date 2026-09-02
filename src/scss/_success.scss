@@ -1,9 +1,10 @@
 @use "variables" as *;
+@use "mixins" as *;
 
 #app[data-state="success"] {
   min-height: 100vh;
 
-  .hero {
+  .dashboard {
     justify-content: flex-start;
     align-items: stretch;
     gap: clamp(2.5rem, 5vw, 4rem);
@@ -12,8 +13,8 @@
     text-align: left;
   }
 
-  .hero__toolbar {
-    flex-direction: row;
+  .dashboard__toolbar {
+    @include flex-center-column;
     justify-content: flex-start;
     gap: clamp(2.5rem, 6vw, 5rem);
     width: min(100%, 92rem);
@@ -290,7 +291,7 @@
 
 @media (max-width: 1000px) {
   #app[data-state="success"] {
-    .hero__toolbar {
+    .dashboard__toolbar {
       gap: 2rem;
     }
 
@@ -328,12 +329,12 @@
 
 @media (max-width: 720px) {
   #app[data-state="success"] {
-    .hero {
+    .dashboard {
       gap: 2.5rem;
       padding: 1.5rem 1rem 2rem;
     }
 
-    .hero__toolbar {
+    .dashboard__toolbar {
       flex-direction: column;
       align-items: stretch;
       gap: 1.25rem;
